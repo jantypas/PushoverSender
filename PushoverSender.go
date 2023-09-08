@@ -83,9 +83,9 @@ func main() {
 		fmt.Println("*** ERROR: You need to set a -body value for the message")
 		os.Exit(-1)
 	}
-
+	// OK -- ready to send
 	fmt.Println("*** Sending to PushOver.net")
-	// Create a new pushover app with an applicaton token
+	// Create a new pushover app with an application token
 	app := pushover.New(configData.DefaultAppToken)
 	// Create a new recipient, in this case our user ID
 	recipient := pushover.NewRecipient(configData.DefaultUserToken)
@@ -102,4 +102,5 @@ func main() {
 	// Print the response if you want
 	log.Println(response)
 	fmt.Println("*** Message send completed")
+	os.Exit(0)
 }
