@@ -9,4 +9,10 @@ I was no where near the keyboard at the time!
 Update the pushover.conf.json file to whatever you choose and place it in
 /etc with read permissions for the binary.
 
+Examples of its use include:
+
+PushoverSender -title "Server message" -body "vmware server is up"
+PushoverSender -title "Oy vey!  Qnap has fallen and I can't get up!"
+PushoverSender -title "Danger! Danger!" -body "Danger Will Robinson!" -sound "alien"
+
 ja@antypas.net
