@@ -41,7 +41,7 @@ func main() {
 	var defaultSound = flag.String("sound", "unset", "Default message sound")
 	var defaultURL = flag.String("url", "unset", "URL to send")
 	var defaultDevice = flag.String("device", "unset", "Device name")
-
+	flag.Parse()
 	// Open our jsonFile
 	var configfile, err = os.Open(*configFileName)
 	// if we os.Open returns an error then handle it
