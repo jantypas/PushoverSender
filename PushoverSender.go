@@ -18,6 +18,16 @@ type Config struct {
 	DefaultSound     string `json:"Sound"`
 }
 
+/*
+*
+Here's the version ID of the program.  Version numbers are so old-fashioned.
+These days we have to name them things like anger-managed-arty.  WE're going to
+name our versions after old Usenet newsgroups.  Kids, if you don't know what Usenet is,
+ask your parents.   Usenet is.... Usenet is like Twitter, but the crazy guy is named
+Rich Rozen.
+*/
+var versionString string = "alt.barney.die.die.die 0923"
+
 func main() {
 	fmt.Println("*** PushOverSend")
 	fmt.Println()
@@ -29,7 +39,8 @@ func main() {
 	var defaultTitle = flag.String("title", "unset", "Set the message title")
 	var defaultBody = flag.String("body", "unset", "Set the message body contents")
 	var defaultSound = flag.String("sound", "unset", "Default message sound")
-	flag.Parse()
+	var defaultURL = flag.String("url", "unset", "URL to send")
+	var defaultDevice = flag.String("device", "unset", "Device name")
 
 	// Open our jsonFile
 	var configfile, err = os.Open(*configFileName)
@@ -72,13 +83,19 @@ func main() {
 		fmt.Println("ERROR: You must set an applicaton token either in the config file or via the command line")
 		os.Exit(-1)
 	}
+	fmt.Println("PushoverSender v: " + versionString)
 	fmt.Println("*** Parameters")
 	fmt.Println("Sound    : " + configData.DefaultSound)
 	fmt.Println("AppToken : " + configData.DefaultAppToken)
 	fmt.Println("UserToken: " + configData.DefaultUserToken)
 	fmt.Println("Title    : " + configData.DefaultTitle)
 	fmt.Println("Body     : " + *defaultBody)
-
+	if *defaultURL == "unset" {
+		fmt.Println("url      : " + *defaultURL)
+	}
+	if *defaultDevice == "unset" {
+		fmt.Println("device   : " + *defaultDevice)
+	}
 	if *defaultBody == "unset" {
 		fmt.Println("*** ERROR: You need to set a -body value for the message")
 		os.Exit(-1)
@@ -93,6 +110,12 @@ func main() {
 	// Create the message to send with a bike sound
 	msg := pushover.NewMessageWithTitle(*defaultBody, configData.DefaultTitle)
 	msg.Sound = configData.DefaultSound
+	if *defaultDevice != "unset" {
+		msg.DeviceName = *defaultDevice
+	}
+	if *defaultURL != "unset" {
+		msg.URL = *defaultURL
+	}
 	// And send it
 	response, err := app.SendMessage(msg, recipient)
 	if err != nil {

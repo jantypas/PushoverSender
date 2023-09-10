@@ -18,6 +18,8 @@ Command line options include:
 -app "key"          - Applicaton key text
 -user "key"         - User authorization key
 -configfile "path"  - If not /etc/pushover.conf.json, where is the json file
+-device "name"      - Name of the device to send to if not all of them
+-url "url"          - URL to present to the user
 
 Examples of its use include:
 
