@@ -24,7 +24,7 @@ Here's the version ID of the program.  Version numbers are so old-fashioned.
 These days we have to name them things like anger-managed-arty.  WE're going to
 name our versions after old Usenet newsgroups.  Kids, if you don't know what Usenet is,
 ask your parents.   Usenet is.... Usenet is like Twitter, but the crazy guy is named
-Rich Rozen.
+Rich Rosen.
 */
 var versionString string = "alt.barney.die.die.die 0923"
 
