@@ -1,5 +1,5 @@
 PushoverSender is a simple command line program to send messages through the Pushover service.
-Written it go, it can be used in Linux scripts, ansimble etc.  It's similar to what could be done with
+Written in go, it can be used in Linux scripts, ansimble etc.  It's similar to what could be done with
 curl, but a bit more flexible.
 
 It comes with absolutely no warranty of any kind and I plan to deny I ever wrote such a thing :-)
